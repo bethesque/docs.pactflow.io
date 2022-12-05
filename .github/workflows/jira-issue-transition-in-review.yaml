@@ -19,9 +19,9 @@ jobs:
 
     - name: Find Issue
       id: find
-      uses: atlassian/gajira-find-issue-key@v3
+      uses: cybervoid/gajira-get-issue@v1.0
       with:
-        from: branch
+        input-text: ${{ github.ref }}
 
     - run: echo "${{ steps.find.outputs.issue }}"
 
