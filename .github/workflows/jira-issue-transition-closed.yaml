@@ -1,11 +1,9 @@
-name: Progress Jira ticket to In Review
+name: Progress Jira ticket to Closed
 
 on:
   pull_request:
     types: 
       - assigned
-
-#todo if the branch was updated, and PR is open
 
 jobs:
   build:
@@ -33,4 +31,4 @@ jobs:
       uses: atlassian/gajira-transition@v3
       with:
         issue: ${{ steps.find.outputs.issue }}
-        transition: "In Progress"
+        transition: "Closed"

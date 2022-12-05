@@ -1,16 +1,15 @@
-name: Progress Jira ticket to In Review
+name: Progress Jira ticket to back In Progess
 
 on:
-  pull_request:
-    types: 
-      - assigned
-
-#todo if the branch was updated, and PR is open
+  pull_request_review:
+    types:
+      - submitted
 
 jobs:
-  build:
+  change_requested:
+    if: github.event.review.state == 'changes_requested'
     runs-on: ubuntu-latest
-    name: Transition to In Review
+    name: Change Requested
     steps:
     - name: login
       uses: atlassian/gajira-login@v3
