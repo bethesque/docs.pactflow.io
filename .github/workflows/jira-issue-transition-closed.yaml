@@ -1,34 +1,36 @@
 name: Progress Jira ticket to Closed
 
-on:
-  pull_request:
-    types: 
-      - assigned
+#todo: if the PR is merged, closed the jira ticket
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    name: Transition to In Review
-    steps:
-    - name: login
-      uses: atlassian/gajira-login@v3
-      env:
-        JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
-        JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
-        JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+# on:
+#   pull_request:
+#     types: 
+#       - assigned
 
-    - run: echo ${{ github.event.pull_request.title }}
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     name: Transition to In Review
+#     steps:
+#     - name: login
+#       uses: atlassian/gajira-login@v3
+#       env:
+#         JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
+#         JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
+#         JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
 
-    - name: Find Issue
-      id: find
-      uses: atlassian/gajira-find-issue-key@v3
-      with:
-        string: ${{ github.event.pull_request.title }}
+#     - run: echo ${{ github.event.pull_request.title }}
 
-    - run: echo "${{ steps.find.outputs.issue }}"
+#     - name: Find Issue
+#       id: find
+#       uses: atlassian/gajira-find-issue-key@v3
+#       with:
+#         string: ${{ github.event.pull_request.title }}
 
-    - name: Transition issue
-      uses: atlassian/gajira-transition@v3
-      with:
-        issue: ${{ steps.find.outputs.issue }}
-        transition: "Closed"
+#     - run: echo "${{ steps.find.outputs.issue }}"
+
+#     - name: Transition issue
+#       uses: atlassian/gajira-transition@v3
+#       with:
+#         issue: ${{ steps.find.outputs.issue }}
+#         transition: "Closed"
