@@ -21,9 +21,9 @@ jobs:
 
     - name: Find Issue
       id: find
-      uses: cybervoid/gajira-get-issue@v1.0
+      uses: atlassian/gajira-find-issue-key@v3
       with:
-        input-text: "${{ github.event.pull_request.title }}"
+        string: ${{ github.event.pull_request.title }}
 
     - run: echo "${{ steps.find.outputs.issue }}"
 
