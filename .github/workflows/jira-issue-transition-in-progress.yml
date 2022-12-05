@@ -8,7 +8,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: Jira Issue Transition to In Progress
+    name: Transition to In Progress
     steps:
     - name: login
       uses: atlassian/gajira-login@v3
