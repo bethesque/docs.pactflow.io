@@ -26,6 +26,7 @@ jobs:
     - run: echo "${{ steps.find.outputs.issue }}"
 
     - name: Transition issue
+      if: steps.find.outputs.issue != ''
       uses: atlassian/gajira-transition@v3
       with:
         issue: ${{ steps.find.outputs.issue }}
