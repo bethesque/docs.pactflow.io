@@ -23,7 +23,7 @@ jobs:
       id: find
       uses: cybervoid/gajira-get-issue@v1.0
       with:
-        input-text: ${{ github.event.pull_request.title }}
+        input-text: "${{ github.event.pull_request.title }}"
 
     - run: echo "${{ steps.find.outputs.issue }}"
 
