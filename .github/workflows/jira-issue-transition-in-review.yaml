@@ -17,13 +17,13 @@ jobs:
         JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
         JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
 
-    - run: echo "${{ github.event.issue.title }}"
+    - run: echo ${{ github.event.pull_request.title }}
 
     - name: Find Issue
       id: find
       uses: cybervoid/gajira-get-issue@v1.0
       with:
-        input-text: ${{ github.event.issue.title }}
+        input-text: ${{ github.event.pull_request.title }}
 
     - run: echo "${{ steps.find.outputs.issue }}"
 
