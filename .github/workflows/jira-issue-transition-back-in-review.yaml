@@ -9,16 +9,14 @@ on:
       - created
 
 jobs:
-  build:
+  commentpr:
     if: ${{ github.event.issue.pull_request }}
     runs-on: ubuntu-latest
     name: Review added
     steps:
       - run: echo ${{ github.event.comment.body }}
 
-
-jobs:
-  build:
+  generalcomment:
     runs-on: ubuntu-latest
     name: Review added for PR
     steps:
