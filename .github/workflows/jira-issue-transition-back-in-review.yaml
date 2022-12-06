@@ -1,17 +1,18 @@
 name: Progress Jira ticket back In Review
 
-on: 
+on:
   issue_comment:
-    types: 
+    types:
       - created
 
 jobs:
-   comment_on_pr:
-     runs-on: ubuntu-latest
-     if: ${{ github.event.issue.pull_request }}
-     name: Transition to Back to Review
-     steps:
+  build:
+    if: ${{ github.event.issue.pull_request }}
+    runs-on: ubuntu-latest
+    name: Change Requested
+    steps:
       - run: echo ${{ github.event.comment.body }}
+
 #     - name: login
 #       uses: atlassian/gajira-login@v3
 #       env:
