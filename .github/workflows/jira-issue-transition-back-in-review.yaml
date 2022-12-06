@@ -4,19 +4,16 @@ on:
   issue_comment:
     types:
       - created
-  pull_request_review_comment: 
-    types:
-      - created
 
 jobs:
-  commentpr:
-    if: ${{ github.event.issue.pull_request }}
-    runs-on: ubuntu-latest
-    name: Review added
-    steps:
-      - run: echo ${{ github.event.comment.body }}
+  # commentpr:
+  #   if: ${{ github.event.issue.pull_request }}
+  #   runs-on: ubuntu-latest
+  #   name: Review added
+  #   steps:
+  #     - run: echo ${{ github.event.comment.body }}
 
-  generalcomment:
+  commentadded:
     runs-on: ubuntu-latest
     name: Review added for PR
     steps:
