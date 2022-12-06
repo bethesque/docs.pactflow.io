@@ -1,6 +1,9 @@
 name: Progress Jira ticket back In Review
 
-on: issue_comment
+on: 
+  issue_comment:
+    types: 
+      - created
 
 jobs:
    comment_on_pr:
