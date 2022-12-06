@@ -1,19 +1,18 @@
 name: Progress Jira ticket to In Review
 
-# on:
-#   pull_request:
-#     types: 
-#       - opened
-#   push:
-#     branches: ['main']
+on:
+  pull_request_review_comment:
+    types: 
+      - created
 
 # #todo if the branch was updated, and PR is open
 
-# jobs:
-#   build:
-#     runs-on: ubuntu-latest
-#     name: Transition to In Review
-#     steps:
+jobs:
+   build:
+     runs-on: ubuntu-latest
+     name: Transition to In Review
+     steps:
+      - run: echo ${{ github.event.comment.body }}
 #     - name: login
 #       uses: atlassian/gajira-login@v3
 #       env:
