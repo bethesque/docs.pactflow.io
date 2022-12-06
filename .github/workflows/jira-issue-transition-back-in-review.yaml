@@ -4,15 +4,25 @@ on:
   issue_comment:
     types:
       - created
+  pull_request_review_comment: 
+    types:
+      - created
 
 jobs:
   build:
     if: ${{ github.event.issue.pull_request }}
     runs-on: ubuntu-latest
-    name: Change Requested
+    name: Review added
     steps:
       - run: echo ${{ github.event.comment.body }}
 
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Review added for PR
+    steps:
+      - run: echo ${{ github.event.comment.body }}
 #     - name: login
 #       uses: atlassian/gajira-login@v3
 #       env:
