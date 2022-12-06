@@ -1,4 +1,4 @@
-name: Progress Jira ticket to back In Review
+name: Jira Back to In Review
 
 on:
   issue_comment:
