@@ -1,16 +1,12 @@
-name: Progress Jira ticket to In Review
+name: Progress Jira ticket back In Review
 
-on:
-  pull_request_review_comment:
-    types: 
-      - created
-
-# #todo if the branch was updated, and PR is open
+on: issue_comment
 
 jobs:
-   build:
+   comment_on_pr:
      runs-on: ubuntu-latest
-     name: Transition to In Review
+     if: ${{ github.event.issue.pull_request }}
+     name: Transition to Back to Review
      steps:
       - run: echo ${{ github.event.comment.body }}
 #     - name: login
