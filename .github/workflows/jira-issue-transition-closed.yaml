@@ -1,25 +1,23 @@
 name: Progress Jira ticket to Closed
 
-#todo: if the PR is merged, closed the jira ticket
+on:
+  pull_request:
+    types: 
+      - closed
 
-# on:
-#   pull_request:
-#     types: 
-#       - assigned
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Transition to Close
+    steps:
+    - name: login
+      uses: atlassian/gajira-login@v3
+      env:
+        JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
+        JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
+        JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
 
-# jobs:
-#   build:
-#     runs-on: ubuntu-latest
-#     name: Transition to In Review
-#     steps:
-#     - name: login
-#       uses: atlassian/gajira-login@v3
-#       env:
-#         JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
-#         JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
-#         JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
-
-#     - run: echo ${{ github.event.pull_request.title }}
+    - run: echo ${{ github.event.pull_request.title }}
 
 #     - name: Find Issue
 #       id: find

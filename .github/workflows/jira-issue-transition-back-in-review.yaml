@@ -1,13 +1,15 @@
 name: Jira Back to In Review
 
 on:
-  issue_comment:
-    types:
-      - created
+  issue_comment:                                     
+    types: [created, edited]
 
 jobs:
   change_requested:
     runs-on: ubuntu-latest
-    name: Comment detected
+    if: ${{ github.event.issue.pull_request }}
+    name: Comment Detected
     steps:
-    - run: echo ${{ github.event.comment.body }}
+    - name: say hello
+      if: contains(github.event.comment.body, '/done')
+      run: echo "pushed back to review"
