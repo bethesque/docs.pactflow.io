@@ -1,4 +1,4 @@
-name: Progress Jira ticket to back In Progess
+name: Progress Jira ticket to back In Progress
 
 on:
   pull_request_review:
