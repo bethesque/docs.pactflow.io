@@ -6,8 +6,9 @@ on:
       - closed
 
 jobs:
-  build:
+  if_merged:
     runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true
     name: Transition to Close
     steps:
     - name: login
@@ -19,16 +20,16 @@ jobs:
 
     - run: echo ${{ github.event.pull_request.title }}
 
-#     - name: Find Issue
-#       id: find
-#       uses: atlassian/gajira-find-issue-key@v3
-#       with:
-#         string: ${{ github.event.pull_request.title }}
+    - name: Find Issue
+      id: find
+      uses: atlassian/gajira-find-issue-key@v3
+      with:
+        string: ${{ github.event.pull_request.title }}
 
-#     - run: echo "${{ steps.find.outputs.issue }}"
+    - run: echo "${{ steps.find.outputs.issue }}"
 
-#     - name: Transition issue
-#       uses: atlassian/gajira-transition@v3
-#       with:
-#         issue: ${{ steps.find.outputs.issue }}
-#         transition: "Closed"
+    - name: Transition issue
+      uses: atlassian/gajira-transition@v3
+      with:
+        issue: ${{ steps.find.outputs.issue }}
+        transition: "Done"
