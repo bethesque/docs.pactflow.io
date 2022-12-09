@@ -1,17 +1,17 @@
-name: Jira Back to In Review
+name: Issue Comment Created
 
 # Once the code author commits all changes to branch, and PR updated, 
 # they can comment with "/done"
 
 on:
   issue_comment:                                     
-    types: [created, edited]
+    types: [created]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     if: ${{ github.event.issue.pull_request && contains(github.event.comment.body, '/done') }}
-    name: Transition to In Review
+    name: Transition Jira Ticket to In Review
     steps:
     - name: login
       uses: atlassian/gajira-login@v3

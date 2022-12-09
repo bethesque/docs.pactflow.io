@@ -1,4 +1,4 @@
-name: Progress Jira ticket to In Progress
+name: Branch Created
 
 on:
   create:
@@ -8,7 +8,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: Transition to In Progress
+    name: Transition Jira ticket to In Progress
     steps:
     - name: login
       uses: atlassian/gajira-login@v3

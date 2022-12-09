@@ -1,4 +1,4 @@
-name: Progress Jira ticket to Closed
+name: Pull Requested Merged
 
 on:
   pull_request:
@@ -9,7 +9,7 @@ jobs:
   if_merged:
     runs-on: ubuntu-latest
     if: github.event.pull_request.merged == true
-    name: Transition to Close
+    name: Transition Jira ticket to Close
     steps:
     - name: login
       uses: atlassian/gajira-login@v3
