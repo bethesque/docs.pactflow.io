@@ -1,4 +1,4 @@
-name: Issue Comment Created
+name: Pull Request Comment Created
 
 # Once the code author commits all changes to branch, and PR updated, 
 # they can comment with "/done"
