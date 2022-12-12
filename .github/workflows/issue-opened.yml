@@ -19,6 +19,7 @@ jobs:
 
     - name: Create
       uses: atlassian/gajira-create@v3
+      id: create
       with:
         project: ${{ secrets.JIRA_PROJECT }}
         issuetype: Task
