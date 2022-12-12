@@ -1,6 +1,6 @@
 # docs.pactflow.io
 
-This is a massive change
+This is a minor change
 
 Pactflow technical documentation
 
