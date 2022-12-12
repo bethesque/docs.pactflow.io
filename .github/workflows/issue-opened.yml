@@ -25,3 +25,22 @@ jobs:
         summary: ${{ github.event.issue.title }}
         description: ${{ github.event.issue.body }}
         fields: '{"customfield_10006": ${{ toJSON(secrets.JIRA_EPIC_TICKET) }}, "customfield_17401":{"value":${{ toJSON( secrets.JIRA_LAYER_CAKE )}}}}'
+
+    - name: Add Jira Label
+      uses: actions-ecosystem/action-add-labels@v1
+      if: steps.create.outputs.issue != ''
+      with:
+        labels: jira
+
+    - name: Add Comment 
+      if: steps.create.outputs.issue != ''
+      uses: actions/github-script@v5
+      with:
+        github-token: ${{secrets.GITHUB_TOKEN}}
+        script: |
+          github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: '👋 Thanks, Jira [${{steps.create.outputs.issue}}] ticket created.'
+          })
