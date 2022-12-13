@@ -1,7 +1,5 @@
 # docs.pactflow.io
 
-This some major change
-
 Pactflow technical documentation
 
 This doco site is generated with [https://docusaurus.io/docs/](Docusaurus)
