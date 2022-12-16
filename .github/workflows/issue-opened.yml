@@ -17,6 +17,12 @@ jobs:
         JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
         JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
 
+    - name: Search
+      id: search
+      uses: tomhjp/gh-action-jira-search@v0.1.0
+      with:
+        jql: 'summary ~ ${{ toJSON(github.event.issue.title)}} AND project=${{ secrets.JIRA_PROJECT }}'
+
     - name: Create
       uses: atlassian/gajira-create@v3
       id: create
@@ -34,7 +40,7 @@ jobs:
         labels: jira
 
     - name: Add Comment 
-      if: steps.create.outputs.issue != ''
+      if: steps.search.outputs.issue == '' && steps.create.outputs.issue != ''
       uses: actions/github-script@v5
       with:
         github-token: ${{secrets.GITHUB_TOKEN}}
