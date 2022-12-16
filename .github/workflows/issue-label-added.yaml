@@ -37,7 +37,10 @@ jobs:
         project: ${{ secrets.JIRA_PROJECT }}
         issuetype: Task
         summary: ${{ github.event.issue.title }}
-        description: ${{ github.event.issue.body }}
+        description: |
+          *Issue Link:* ${{ github.event.issue.html_url }}
+          
+          ${{ github.event.issue.body }}
         fields: '{"customfield_10006": ${{ toJSON(secrets.JIRA_EPIC_TICKET) }}, "customfield_17401":{"value":${{ toJSON( secrets.JIRA_LAYER_CAKE )}}}}'
 
     - name: Add Comment 
