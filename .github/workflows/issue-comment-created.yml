@@ -26,7 +26,7 @@ jobs:
       id: search
       uses: tomhjp/gh-action-jira-search@v0.1.0
       with:
-        jql: 'summary ~ ${{ toJSON(github.event.issue.title)}} AND project=${{ secrets.JIRA_PROJECT }}'
+        jql: "summary ~ ${{ toJSON(github.event.issue.title)}} AND project=${{ secrets.JIRA_PROJECT }}"
     
     - name: Log
       run: echo "Found issue ${{ steps.search.outputs.issue }}"
