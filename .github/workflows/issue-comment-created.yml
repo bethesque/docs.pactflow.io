@@ -18,9 +18,10 @@ jobs:
         JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
         JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
         JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+        ISSUE_TITLE: ${{ github.event.issue.title }}
     
     - name: SearchParam
-      run: echo "summary ~ ${{ toJSON(github.event.issue.title)}} AND project=${{ secrets.JIRA_PROJECT }}"
+      run: echo 'summary ~ $ISSUE_TITLE AND project=${{ secrets.JIRA_PROJECT }}'
     
     - name: Search
       id: search
