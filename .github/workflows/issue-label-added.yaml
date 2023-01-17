@@ -25,14 +25,11 @@ jobs:
     
     - name: Log
       run: echo "Found issue ${{ steps.search.outputs.issue }}"
-    
-    - name: Create
-      id: create
-      if: steps.search.outputs.issue == ''
 
     - name: Create
       id: create
       uses: atlassian/gajira-create@v3
+      if: steps.search.outputs.issue == ''      
       with:
         project: ${{ secrets.JIRA_PROJECT }}
         issuetype: Task
